@@ -43,31 +43,40 @@ void insertMap(HashMap * map, char * key, void * value)
 {
   if (map == NULL || key == NULL)
     return;
-  
+
   if ((map->size + 1) >= (map->capacity * 0.7))
   {
     enlarge(map);
   }
-
-  long posicion = hash(key, map->capacity);
-
-  if (map->buckets[posicion] == NULL)
+  Pair * pair = searchMap(map, key);
+  
+  if (pair == NULL)
   {
-    map->buckets[posicion] = createPair(key, value);
-    map->size++;
+    long posicion = hash(key, map->capacity);
+  
+    if (map->buckets[posicion] == NULL)
+    {
+      map->buckets[posicion] = createPair(key, value);
+      map->size++;
+    }
+  
+    else
+    {
+      while (map->buckets[posicion] != NULL)
+      {
+        if (posicion == map->capacity)
+          posicion = 0;
+        
+        posicion++;
+      }
+      map->buckets[posicion] = createPair(key, value);
+      map->size++;
+    }
   }
 
   else
   {
-    while (map->buckets[posicion] != NULL)
-    {
-      if (posicion == map->capacity)
-        posicion = 0;
-      
-      posicion++;
-    }
-    map->buckets[posicion] = createPair(key, value);
-    map->size++;
+    pair->value = value;
   }
 }
 
@@ -96,10 +105,32 @@ void eraseMap(HashMap * map,  char * key)
 
 }
 
-Pair * searchMap(HashMap * map,  char * key) {   
-
-
+Pair * searchMap(HashMap * map,  char * key)
+{   
+  if (map == NULL || key == NULL)
     return NULL;
+
+  long posicion = hash(key, map->capacity);
+
+  if (map->buckets[posicion] == NULL)
+  {
+    return NULL;
+  }
+
+  else
+  {
+    while (map->buckets[posicion] != NULL)
+    {
+      if (is_equal(map->buckets[posicion]->key, key))
+        return map->buckets[posicion];
+      
+      if (posicion == map->capacity)
+        posicion = 0;
+
+      posicion++;
+    }
+    return NULL;
+  }
 }
 
 Pair * firstMap(HashMap * map) {
