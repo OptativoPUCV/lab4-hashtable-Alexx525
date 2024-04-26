@@ -64,3 +64,24 @@ hashmap.c:82:11: error: unused variable ‘aux’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 338b7bc
+Fri 26 Apr 2024 02:18:18 AM UTC: 
+ hashmap.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:60:7: error: this ‘if’ clause does not guard... [-Werror=misleading-indentation]
+   60 |       if (posicion == map->capacity)
+      |       ^~
+hashmap.c:62:9: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   62 |         posicion++;
+      |         ^~~~~~~~
+hashmap.c:72:18: error: assignment to ‘long int’ from ‘Pair *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   72 |     map->current = pair;
+      |                  ^
+hashmap.c: In function ‘enlarge’:
+hashmap.c:82:11: error: unused variable ‘aux’ [-Werror=unused-variable]
+   82 |   Pair ** aux = map->buckets;
+      |           ^~~
+cc1: all warnings being treated as errors
+Compilation failed
+476b95b
