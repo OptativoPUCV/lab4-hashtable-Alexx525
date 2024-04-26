@@ -172,7 +172,9 @@ Pair * firstMap(HashMap * map)
   if (map == NULL)
     return NULL;
   
-  for (long i = map->current; i < map->capacity; i++)
+  long i = map->current;
+
+  do
   {
     if (map->buckets[i] != NULL)
     {
@@ -180,6 +182,8 @@ Pair * firstMap(HashMap * map)
       return map->buckets[i];
     }
   }
+  while (i != map->current);
+  
 
   map->current = -1;
   return NULL;
