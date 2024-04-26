@@ -48,35 +48,28 @@ void insertMap(HashMap * map, char * key, void * value)
   {
     enlarge(map);
   }
-  Pair * pair = searchMap(map, key);
   
+  Pair * pair = searchMap(map, key);
+
   if (pair == NULL)
   {
     long posicion = hash(key, map->capacity);
-  
-    if (map->buckets[posicion] == NULL)
+    
+    while (map->buckets[posicion] != NULL)
     {
-      map->buckets[posicion] = createPair(key, value);
-      map->size++;
-    }
-  
-    else
-    {
-      while (map->buckets[posicion] != NULL)
-      {
-        if (posicion == map->capacity)
-          posicion = 0;
-        
+      if (posicion == map->capacity)
+        posicion = 0;
         posicion++;
-      }
-      map->buckets[posicion] = createPair(key, value);
-      map->size++;
     }
+    map->buckets[posicion] = createPair(key, value);
+    map->size++;
+    map->current = posicion;
   }
 
   else
   {
     pair->value = value;
+    map->current = pair;
   }
 }
 
@@ -109,8 +102,14 @@ HashMap * createMap(long capacity)
 
 void eraseMap(HashMap * map,  char * key)
 {    
+  Pair * elem = searchMap(map, key);
 
+  if (elem == NULL)
+    return;
 
+  elem->key = NULL;
+  elem->value = NULL;
+  map->size--;
 }
 
 Pair * searchMap(HashMap * map,  char * key)
@@ -141,12 +140,14 @@ Pair * searchMap(HashMap * map,  char * key)
   }
 }
 
-Pair * firstMap(HashMap * map) {
+Pair * firstMap(HashMap * map)
+{
 
     return NULL;
 }
 
-Pair * nextMap(HashMap * map) {
+Pair * nextMap(HashMap * map)
+{
 
     return NULL;
 }
