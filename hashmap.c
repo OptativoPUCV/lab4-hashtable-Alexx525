@@ -75,6 +75,7 @@ void insertMap(HashMap * map, char * key, void * value)
       {
         map->current = posicion;
         map->size++;
+        return;
       }
       
       posicion = (posicion + 1) % map->capacity;
