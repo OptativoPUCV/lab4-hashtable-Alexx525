@@ -100,7 +100,7 @@ void enlarge(HashMap * map)
   {
     if (map->buckets[i] != NULL)
     {
-      //eraseMap(map, map->buckets[i]->key);
+      eraseMap(map, map->buckets[i]->key);
       insertMap(map, aux[i]->key, aux[i]->value);
       map->size++;
     }
