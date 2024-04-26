@@ -101,7 +101,15 @@ void enlarge(HashMap * map)
     if (map->buckets[i] != NULL)
     {
       eraseMap(map, map->buckets[i]->key);
+    }
+  }
+  
+  for (long i = 0; i < (map->capacity / 2); i++)
+  {
+    if (aux[i] != NULL)
+    {
       insertMap(map, aux[i]->key, aux[i]->value);
+      free(aux[i]);
       map->size++;
     }
   }
