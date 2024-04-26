@@ -181,9 +181,9 @@ Pair * firstMap(HashMap * map)
       map->current = i;
       return map->buckets[i];
     }
-  }
-  while (i != map->current);
-  
+    i = (i + 1) % map->capacity;
+    
+  } while (i != map->current);
 
   map->current = -1;
   return NULL;
