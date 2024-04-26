@@ -175,7 +175,7 @@ Pair * firstMap(HashMap * map)
   if (map == NULL)
     return NULL;
 
-  for (long i = 0; i < map->capacity; i++)
+  for (long i = 0; i <= map->capacity; i++)
   {
     if (map->buckets[i] != NULL)
     {
