@@ -105,6 +105,8 @@ void enlarge(HashMap * map)
       map->size++;
     }
   }
+
+  free(aux);
 }
 
 
