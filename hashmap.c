@@ -72,7 +72,10 @@ void insertMap(HashMap * map, char * key, void * value)
     while (posicion < map->capacity)
     {
       if (is_equal(pair->key, key))
+      {
         map->current = posicion;
+        map->size++;
+      }
       
       posicion = (posicion + 1) % map->capacity;
     }
