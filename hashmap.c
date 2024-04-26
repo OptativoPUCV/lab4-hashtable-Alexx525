@@ -63,7 +63,7 @@ void insertMap(HashMap * map, char * key, void * value)
     map->size = map->size + 1;
   }
 
-  else
+  /*else
   {
     pair->value = value;
 
@@ -77,7 +77,7 @@ void insertMap(HashMap * map, char * key, void * value)
       posicion = (posicion + 1) % map->capacity;
     }
     map->current = posicion;
-  }
+  }*/
 }
 
 void enlarge(HashMap * map)
