@@ -100,7 +100,6 @@ void enlarge(HashMap * map)
     {
       insertMap(map, aux[i]->key, aux[i]->value);
       free(aux[i]);
-      //map->size = map->size + 1;
     }
   }
 
