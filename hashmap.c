@@ -43,12 +43,12 @@ void insertMap(HashMap * map, char * key, void * value)
 {
   if (map == NULL || key == NULL)
     return;
+
+  /*if ((map->size + 1) >= (map->capacity * 0.7))
+    enlarge(map);*/
+  
   long posicion = hash(key, map->capacity);
   Pair * pair = searchMap(map, key);
-  
-  if (is_equal(pair->key, key) == 1)
-    if ((map->size + 1) >= (map->capacity * 0.7))
-      enlarge(map);
 
   if (pair == NULL)
   {
