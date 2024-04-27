@@ -67,7 +67,7 @@ void insertMap(HashMap * map, char * key, void * value)
   {
     pair->value = value;
 
-    /*long posicion = hash(key, map->capacity);
+    long posicion = hash(key, map->capacity);
     
     while (posicion < map->capacity)
     {
@@ -76,7 +76,7 @@ void insertMap(HashMap * map, char * key, void * value)
       
       posicion = (posicion + 1) % map->capacity;
     }
-    map->current = posicion;*/
+    map->current = posicion;
   }
 }
 
