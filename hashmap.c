@@ -92,14 +92,6 @@ void enlarge(HashMap * map)
 
   map->size = 0;
 
-  /*for (long i = 0; i < (map->capacity / 2); i++)
-  {
-    if (map->buckets[i] != NULL)
-    {
-      eraseMap(map, map->buckets[i]->key);
-    }
-  }*/
-  
   for (long i = 0; i < (map->capacity / 2); i++)
   {
     if (aux[i] != NULL)
