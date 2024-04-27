@@ -138,7 +138,7 @@ Pair * searchMap(HashMap * map,  char * key)
 
   long posicion = hash(key, map->capacity);
 
-  if (map->buckets[posicion] == NULL)
+  if (map->buckets[posicion] == NULL || map->buckets[posicion]->key == NULL)
   {
     return NULL;
   }
