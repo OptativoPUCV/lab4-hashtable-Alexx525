@@ -50,7 +50,7 @@ void insertMap(HashMap * map, char * key, void * value)
   long posicion = hash(key, map->capacity);
   Pair * pair = searchMap(map, key);
 
-  if (pair == NULL && map->buckets[posicion] != NULL)
+  if (pair == NULL && pair->key == NULL)
   {
     while (map->buckets[posicion] != NULL && map->buckets[posicion]->key != NULL)
       posicion = (posicion + 1) % map->capacity;
