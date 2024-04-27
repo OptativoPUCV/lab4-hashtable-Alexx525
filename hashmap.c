@@ -68,7 +68,7 @@ void insertMap(HashMap * map, char * key, void * value)
     
     while (posicion < map->capacity)
     {
-      if (is_equal(pair->key, key))
+      if (is_equal(pair->key, key) == 1)
         break;
       
       posicion = (posicion + 1) % map->capacity;
@@ -152,7 +152,7 @@ Pair * searchMap(HashMap * map,  char * key)
   {
     while (map->buckets[posicion] != NULL)
     {
-      if (is_equal(map->buckets[posicion]->key, key))
+      if (is_equal(map->buckets[posicion]->key, key) == 1)
       {
         map->current = posicion;
         return map->buckets[posicion];
