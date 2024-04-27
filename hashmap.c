@@ -41,10 +41,10 @@ int is_equal(void* key1, void* key2){
 
 void insertMap(HashMap * map, char * key, void * value)
 {
-  
+  if (map == NULL || key == NULL)
+    return;
 
-  if ((map->size + 1) >= (map->capacity * 0.7))
-    enlarge(map);
+  
 
   long posicion = hash(key, map->capacity);
   Pair * pair = searchMap(map, key);
