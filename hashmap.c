@@ -169,19 +169,18 @@ Pair * firstMap(HashMap * map)
   if (map == NULL)
     return NULL;
   
-  long i = map->current;
+  long posicion = 0;
 
-  do
+  while (posicion < map->capacity)
   {
-    if (map->buckets[i] != NULL)
+    if (map->buckets[posicion] != NULL)
     {
-      map->current = i;
-      return map->buckets[i];
+      map->current = posicion;
+      return map->buckets[posicion];
     }
-    i = (i + 1) % map->capacity;
-    
-  } while (i != map->current);
-
+    posicion = (posicion + 1) % map->capacity;
+  }
+  
   map->current = -1;
   return NULL;
 }
